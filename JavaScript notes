@@ -1,5 +1,8 @@
 // Quick reference for JavaScript coding...
 
+//  randomize an array's list
+//  using a switch statement
+//  for loop
 
 /* 
     randomize an array's list
@@ -23,3 +26,15 @@
     default:
       code block;
   }
+
+
+/*
+    for loop
+*/
+
+    var i;
+    var colours = ["blue", "red", "yellow", "green", "purple"]
+    
+    for(i=0; i < colours.length; i++) {
+        code block;    
+    }
