@@ -1,0 +1,25 @@
+// Quick reference for JavaScript coding...
+
+
+/* 
+    randomize an array's list
+*/
+
+  var colours = ["blue", "red", "yellow", "green", "purple"]
+  colours.sort(function(a,b){return 0.5 - Math.random()});
+  
+
+/*
+    using a switch statement
+*/
+
+  switch(expression) {
+    case 0:
+      code block
+      break;
+    case 1:
+      code block;
+      break;
+    default:
+      code block;
+  }
