@@ -48,8 +48,11 @@
 */
     declaring a variable using objects:
         
-        var myMainObjects = {
-            lemons: 2, oranges: 10, apples: 3};
+        var myFruitBasketObjects = {
+            lemons: 2,        // number of lemons
+            oranges: 10,      // number of oranges
+            apples: 3         // number of apples
+        };
             
     declaring a variable using an array:
     
