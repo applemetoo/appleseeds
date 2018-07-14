@@ -1,8 +1,11 @@
 // Quick reference for JavaScript coding...
 
-//  randomize an array's list
-//  using a switch statement
-//  for loop
+/*
+    * randomize an array's list
+    * using a switch statement
+    * for loop
+    * variables: arrays & objects
+*/
 
 /* 
     randomize an array's list
@@ -38,3 +41,16 @@
     for(i=0; i < colours.length; i++) {
         code block;    
     }
+
+
+/*
+    variables: arrays & objects
+*/
+    declaring a variable using objects:
+        
+        var myMainObjects = {
+            lemons: 2, oranges: 10, apples: 3};
+            
+    declaring a variable using an array:
+    
+        var hamburgers = [10, "yummy", a_tmp];
