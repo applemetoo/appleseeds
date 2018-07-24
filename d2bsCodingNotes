@@ -9,8 +9,8 @@
 		Config.yourScipt.Names    = [];     // List of players placed into an array
     
   Config.PickitFiles.push("kolton.nip");    // "push"     appends the list of items from Kolton's nip file to the end
-                                                          of the default list
+                                            //            of the default list
   Config.PickitFiles.unshift("kolton.nip"); // "unshift"  appends the list of items from Kolton's nip file to the beginning
-                                                          of the default list
+                                            //            of the default list
 
 
