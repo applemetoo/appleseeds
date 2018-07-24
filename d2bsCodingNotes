@@ -1,0 +1,16 @@
+
+
+
+// storing values into variables and then calling up a script
+
+  Scripts.yourScipt           = true;
+		Config.yourScipt.Mode     = false;  // for enabling/disabling a feature
+		Config.yourScipt.Wait     = false;  // enable/disable an idle/wait feature
+		Config.yourScipt.Names    = [];     // List of players placed into an array
+    
+  Config.PickitFiles.push("kolton.nip");    // "push"     appends the list of items from Kolton's nip file to the end
+                                                          of the default list
+  Config.PickitFiles.unshift("kolton.nip"); // "unshift"  appends the list of items from Kolton's nip file to the beginning
+                                                          of the default list
+
+
