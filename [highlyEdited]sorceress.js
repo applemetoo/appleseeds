@@ -8,107 +8,96 @@ function LoadConfig() {
                                   //  Shows monster's classid/HP percent/resistances.
                                   //  Shows other players' gear.
 
-	// Battle orders script - Use this for 2+ characters (for example BO barb + sorc)
-	Scripts.BattleOrders = false;
-		Config.BattleOrders.Mode = 0; // 0 = give BO, 1 = get BO
-		Config.BattleOrders.Wait = false; // Idle until the player that received BO leaves.
-		Config.BattleOrders.Getters = []; // List of players to wait for before casting Battle Orders (mode 0). All players must be in the same area as the BOer.
-
-	// Team MF system
-	Config.MFLeader = false; // Set to true if you have one or more MFHelpers. Opens TP and gives commands when doing normal MF runs.
-
-	// Boss/area scripts
-
 	// *** act 1 ***
-	Scripts.Corpsefire = false;
-		Config.Corpsefire.ClearDen = false;
-	Scripts.Mausoleum = false;
-		Config.Mausoleum.KillBloodRaven = false;
-		Config.Mausoleum.ClearCrypt = false;
-	Scripts.Rakanishu = false;
-		Config.Rakanishu.KillGriswold = true;
-	Scripts.UndergroundPassage = false;
-	Scripts.Coldcrow = false;
-	Scripts.Tristram = false;
-		Config.Tristram.PortalLeech = false; // Set to true to open a portal for leechers.
-	Scripts.Pit = false;
-		Config.Pit.ClearPit1 = true;
-	Scripts.Treehead = false;
-	Scripts.Smith = false;
-	Scripts.BoneAsh = false;
-	Scripts.Countess = false;
-		Config.Countess.KillGhosts = false;
-	Scripts.Andariel = false;
-	Scripts.Cows = false;
+		Scripts.Corpsefire = false;
+			Config.Corpsefire.ClearDen = false;
+		Scripts.Mausoleum = false;
+			Config.Mausoleum.KillBloodRaven = false;
+			Config.Mausoleum.ClearCrypt = false;
+		Scripts.Rakanishu = false;
+			Config.Rakanishu.KillGriswold = true;
+		Scripts.UndergroundPassage = false;
+		Scripts.Coldcrow = false;
+		Scripts.Tristram = false;
+			Config.Tristram.PortalLeech = false; // Set to true to open a portal for leechers.
+		Scripts.Pit = false;
+			Config.Pit.ClearPit1 = true;
+		Scripts.Treehead = false;
+		Scripts.Smith = false;
+		Scripts.BoneAsh = false;
+		Scripts.Countess = false;
+			Config.Countess.KillGhosts = false;
+		Scripts.Andariel = false;
+		Scripts.Cows = false;
 
 	// *** act 2 ***
-	Scripts.Radament = false;
-	Scripts.Coldworm = false;
-		Config.Coldworm.KillBeetleburst = false;
-		Config.Coldworm.ClearMaggotLair = false; // Clear all 3 levels
-	Scripts.AncientTunnels = false;
-		Config.AncientTunnels.OpenChest = false; // Open special chest in Lost City
-		Config.AncientTunnels.KillDarkElder = false;
-	Scripts.Summoner = false;
-		Config.Summoner.FireEye = false;
-	Scripts.Tombs = false;
-	Scripts.Duriel = false;
+		Scripts.Radament = false;
+		Scripts.Coldworm = false;
+			Config.Coldworm.KillBeetleburst = false;
+			Config.Coldworm.ClearMaggotLair = false; // Clear all 3 levels
+		Scripts.AncientTunnels = false;
+			Config.AncientTunnels.OpenChest = false; // Open special chest in Lost City
+			Config.AncientTunnels.KillDarkElder = false;
+		Scripts.Summoner = false;
+			Config.Summoner.FireEye = false;
+		Scripts.Tombs = false;
+		Scripts.Duriel = false;
 
 	// *** act 3 ***
-	Scripts.Stormtree = false;
-	Scripts.KurastTemples = false;
-	Scripts.Icehawk = false;
-	Scripts.Endugu = false;
-	Scripts.Travincal = false;
-		Config.Travincal.PortalLeech = false; // Set to true to open a portal for leechers.
-	Scripts.Mephisto = false;
-		Config.Mephisto.MoatTrick = false;
-		Config.Mephisto.KillCouncil = false;
-		Config.Mephisto.TakeRedPortal = true;
+		Scripts.Stormtree = false;
+		Scripts.KurastTemples = false;
+		Scripts.Icehawk = false;
+		Scripts.Endugu = false;
+		Scripts.Travincal = false;
+			Config.Travincal.PortalLeech = false; // Set to true to open a portal for leechers.
+		Scripts.Mephisto = false;
+			Config.Mephisto.MoatTrick = false;
+			Config.Mephisto.KillCouncil = false;
+			Config.Mephisto.TakeRedPortal = true;
 
 	// *** act 4 ***
-	Scripts.OuterSteppes = false;
-	Scripts.Izual = false;
-	Scripts.Hephasto = false;
-	Scripts.Vizier = false; // Intended for classic sorc, kills Vizier only.
-	Scripts.FastDiablo = false;
-	Scripts.Diablo = false;
-		Config.Diablo.Entrance = true; // Start from entrance
-		Config.Diablo.SealWarning = "Leave the seals alone!";
-		Config.Diablo.EntranceTP = "Entrance TP up";
-		Config.Diablo.StarTP = "Star TP up";
-		Config.Diablo.DiabloMsg = "Diablo";
-	Scripts.SealLeader = false; // Clear a safe spot around seals and invite leechers in. Leechers should run SealLeecher script. Don't run with Diablo or FastDiablo.
+		Scripts.OuterSteppes = false;
+		Scripts.Izual = false;
+		Scripts.Hephasto = false;
+		Scripts.Vizier = false; // Intended for classic sorc, kills Vizier only.
+		Scripts.FastDiablo = false;
+		Scripts.Diablo = false;
+			Config.Diablo.Entrance = true; // Start from entrance
+			Config.Diablo.SealWarning = "Leave the seals alone!";
+			Config.Diablo.EntranceTP = "Entrance TP up";
+			Config.Diablo.StarTP = "Star TP up";
+			Config.Diablo.DiabloMsg = "Diablo";
+		Scripts.SealLeader = false; // Clear a safe spot around seals and invite leechers in. Leechers should run SealLeecher script. Don't run with Diablo or FastDiablo.
 
 	// *** act 5 ***
-	Scripts.Pindleskin = false;
-		Config.Pindleskin.UseWaypoint = false;
-		Config.Pindleskin.KillNihlathak = true;
-		Config.Pindleskin.ViperQuit = false; // End script if Tomb Vipers are found.
-	Scripts.Nihlathak = false;
-		Config.Nihlathak.ViperQuit = false; // End script if Tomb Vipers are found.
-	Scripts.Eldritch = false;
-		Config.Eldritch.OpenChest = true;
-		Config.Eldritch.KillShenk = true;
-		Config.Eldritch.KillDacFarren = true;
-	Scripts.Eyeback = false;
-	Scripts.SharpTooth = false;
-	Scripts.ThreshSocket = false;
-	Scripts.Abaddon = false;
-	Scripts.Frozenstein = false;
-		Config.Frozenstein.ClearFrozenRiver = true;
-	Scripts.Bonesaw = false;
-		Config.Bonesaw.ClearDrifterCavern = false;
-	Scripts.Snapchip = false;
-		Config.Snapchip.ClearIcyCellar = true;
-	Scripts.Worldstone = false;
-	Scripts.Baal = false;
-		Config.Baal.HotTPMessage = "Hot TP!";
-		Config.Baal.SafeTPMessage = "Safe TP!";
-		Config.Baal.BaalMessage = "Baal!";
-		Config.Baal.SoulQuit = false; // End script if Souls (Undead Soul Killers) are found.
-		Config.Baal.DollQuit = false; // End script if Dolls (Undead Stigyan Dolls) are found.
-		Config.Baal.KillBaal = true; // Kill Baal. Leaves game after wave 5 if false.
+		Scripts.Pindleskin = false;
+			Config.Pindleskin.UseWaypoint = false;
+			Config.Pindleskin.KillNihlathak = true;
+			Config.Pindleskin.ViperQuit = false; // End script if Tomb Vipers are found.
+		Scripts.Nihlathak = false;
+			Config.Nihlathak.ViperQuit = false; // End script if Tomb Vipers are found.
+		Scripts.Eldritch = false;
+			Config.Eldritch.OpenChest = true;
+			Config.Eldritch.KillShenk = true;
+			Config.Eldritch.KillDacFarren = true;
+		Scripts.Eyeback = false;
+		Scripts.SharpTooth = false;
+		Scripts.ThreshSocket = false;
+		Scripts.Abaddon = false;
+		Scripts.Frozenstein = false;
+			Config.Frozenstein.ClearFrozenRiver = true;
+		Scripts.Bonesaw = false;
+			Config.Bonesaw.ClearDrifterCavern = false;
+		Scripts.Snapchip = false;
+			Config.Snapchip.ClearIcyCellar = true;
+		Scripts.Worldstone = false;
+		Scripts.Baal = false;
+			Config.Baal.HotTPMessage = "Hot TP!";
+			Config.Baal.SafeTPMessage = "Safe TP!";
+			Config.Baal.BaalMessage = "Baal!";
+			Config.Baal.SoulQuit = false; // End script if Souls (Undead Soul Killers) are found.
+			Config.Baal.DollQuit = false; // End script if Dolls (Undead Stigyan Dolls) are found.
+			Config.Baal.KillBaal = true; // Kill Baal. Leaves game after wave 5 if false.
 
 	/* ### leeching section ###
 	* Unless stated otherwise, leader's character name isn't needed on order to run.
