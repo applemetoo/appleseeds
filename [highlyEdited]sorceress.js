@@ -1,7 +1,12 @@
 // Sorceress config file
 
 function LoadConfig() {
- 
+ 	Config.Leader 		= ""; 	// Leader's ingame character name. Leave blank to try auto-detection (works in AutoBaal, Wakka, MFHelper)
+	Config.QuitList 	= [""]; // List of character names to quit with. Example: Config.QuitList = ["MySorc", "MyDin"];
+	Config.QuitListMode 	= 0; 	// 0 = use character names; 1 = use profile names (all profiles must run on the same computer).
+	
+	Scripts.Follower = false;	// Script that follows a manually played leader around like a merc. For a list of commands, see Follower.js
+	
 	Scripts.UserAddon = false;      //  if true, then you are able to see more info about items/NPCs/players 
                                   	//  by placing the cursor over them.
                                   	//  Shows item level/items in sockets/classid/code/magic item prefix/suffix #'s.
@@ -98,81 +103,67 @@ function LoadConfig() {
 			Config.Snapchip.ClearIcyCellar = true;
 		Scripts.Worldstone = false;
 		Scripts.Baal = false;
-			Config.Baal.HotTPMessage = "Hot TP!";
-			Config.Baal.SafeTPMessage = "Safe TP!";
-			Config.Baal.BaalMessage = "Baal!";
-			Config.Baal.SoulQuit = false; // End script if Souls (Undead Soul Killers) are found.
-			Config.Baal.DollQuit = false; // End script if Dolls (Undead Stigyan Dolls) are found.
-			Config.Baal.KillBaal = true; // Kill Baal. Leaves game after wave 5 if false.
+			Config.Baal.HotTPMessage 	= "";
+			Config.Baal.SafeTPMessage 	= "";
+			Config.Baal.BaalMessage 	= "";
+			Config.Baal.SoulQuit 		= false; 	// End script if Souls (Undead Soul Killers) are found.
+			Config.Baal.DollQuit 		= false; 	// End script if Dolls (Undead Stigyan Dolls) are found.
+			Config.Baal.KillBaal 		= true;		// Kill Baal. Leaves game after wave 5 if false.
 
-	/* ### leeching section ###
-	* Unless stated otherwise, leader's character name isn't needed on order to run.
-	* Don't use more scripts of the same type! (Run AutoBaal OR BaalHelper, not both)
-	*/
 
-	Config.Leader = ""; // Leader's ingame character name. Leave blank to try auto-detection (works in AutoBaal, Wakka, MFHelper)
-	Config.QuitList = [""]; // List of character names to quit with. Example: Config.QuitList = ["MySorc", "MyDin"];
-	Config.QuitListMode = 0; // 0 = use character names; 1 = use profile names (all profiles must run on the same computer).
 
-	Scripts.TristramLeech = false; // Enters Tristram, attempts to stay close to the leader and will try and help kill.
-	Scripts.TravincalLeech = false; // Enters portal at back of Travincal.
+	Scripts.TristramLeech 	= false; // Enters Tristram, attempts to stay close to the leader and will try and help kill.
+	Scripts.TravincalLeech 	= false; // Enters portal at back of Travincal.
 		Config.TravincalLeech.Helper = true; // If set to true the character will teleport to the stairs and help attack.
-	Scripts.MFHelper = false; // Run the same MF run as the MFLeader. Leader must have Config.MFLeader = true
-	Scripts.Wakka = false; // Walking chaos leecher with auto leader assignment, stays at safe distance from the leader
-	Scripts.SealLeecher = false; // Enter safe portals to Chaos. Leader should run SealLeader.
-	Scripts.DiabloHelper = false; // Chaos helper, kills monsters and doesn't open seals on its own.
-		Config.DiabloHelper.Wait = 120; // Seconds to wait for a runner to be in Chaos. If Config.Leader is set, it will wait only for the leader.
-		Config.DiabloHelper.Entrance = true; // Start from entrance. Set to false to start from star.
-		Config.DiabloHelper.SkipTP = false; // Don't wait for town portal and directly head to chaos. It will clear monsters around chaos entrance and wait for the runner.
+	Scripts.MFHelper = false; 	// Run the same MF run as the MFLeader. Leader must have Config.MFLeader = true
+	Scripts.Wakka = false; 		// Walking chaos leecher with auto leader assignment, stays at safe distance from the leader
+	Scripts.SealLeecher = false; 	// Enter safe portals to Chaos. Leader should run SealLeader.
+	Scripts.DiabloHelper = false; 	// Chaos helper, kills monsters and doesn't open seals on its own.
+		Config.DiabloHelper.Wait = 120; 	// Seconds to wait for a runner to be in Chaos. If Config.Leader is set, it will wait only for the leader.
+		Config.DiabloHelper.Entrance = true; 	// Start from entrance. Set to false to start from star.
+		Config.DiabloHelper.SkipTP = false; 	// Don't wait for town portal and directly head to chaos. It will clear monsters around chaos entrance and wait for the runner.
 		Config.DiabloHelper.SkipIfBaal = false; // End script if there are party members in a Baal run.
-	Scripts.AutoBaal = false; // Baal leecher with auto leader assignment
-		Config.AutoBaal.FindShrine = false; // false = disabled, 1 = search after hot tp message, 2 = search as soon as leader is found
-		Config.AutoBaal.LeechSpot = [15115, 5050]; // X, Y coords of Throne Room leech spot
-		Config.AutoBaal.LongRangeSupport = false; // Cast long distance skills from a safe spot
+	Scripts.AutoBaal = false; 				// Baal leecher with auto leader assignment
+		Config.AutoBaal.FindShrine = false; 		// false = disabled, 1 = search after hot tp message, 2 = search as soon as leader is found
+		Config.AutoBaal.LeechSpot = [15115, 5050]; 	// X, Y coords of Throne Room leech spot
+		Config.AutoBaal.LongRangeSupport = false; 	// Cast long distance skills from a safe spot
 	Scripts.BaalHelper = false;
-		Config.BaalHelper.Wait = 120; // Seconds to wait for a runner to be in Throne
-		Config.BaalHelper.KillNihlathak = false; // Kill Nihlathak before going to Throne
-		Config.BaalHelper.FastChaos = false; // Kill Diablo before going to Throne
-		Config.BaalHelper.DollQuit = false;  // End script if Dolls (Undead Soul Killers) are found.
-		Config.BaalHelper.KillBaal = true; // Kill Baal. If set to false, you must configure Config.QuitList or the bot will wait indefinitely.
-		Config.BaalHelper.SkipTP = false; // Don't wait for a TP, go to WSK3 and wait for someone to go to throne. Anti PK measure.
-	Scripts.Follower = false; // Script that follows a manually played leader around like a merc. For a list of commands, see Follower.js
+		Config.BaalHelper.Wait = 120; 			// Seconds to wait for a runner to be in Throne
+		Config.BaalHelper.KillNihlathak = false; 	// Kill Nihlathak before going to Throne
+		Config.BaalHelper.FastChaos = false; 		// Kill Diablo before going to Throne
+		Config.BaalHelper.DollQuit = false;  		// End script if Dolls (Undead Soul Killers) are found.
+		Config.BaalHelper.KillBaal = true; 		// Kill Baal. If set to false, you must configure Config.QuitList or the bot will wait indefinitely.
+		Config.BaalHelper.SkipTP = false; 		// Don't wait for a TP, go to WSK3 and wait for someone to go to throne. Anti PK measure.
+	
 
 	// *** special scripts ***
 	Scripts.WPGetter = false; // Get missing waypoints
-	Scripts.GetKeys = false;  // Hunt for T/H/D keys
-	Scripts.OrgTorch = false;
-		Config.OrgTorch.MakeTorch = true; // Convert organ sets to torches
-		Config.OrgTorch.WaitForKeys = true; // Enable Torch System to get keys from other profiles. See libs/TorchSystem.js for more info
-		Config.OrgTorch.WaitTimeout = 15; // Time in minutes to wait for keys before moving on
-		Config.OrgTorch.UseSalvation = true; // Use Salvation aura on Mephisto (if possible)
-		Config.OrgTorch.GetFade = false; // Get fade by standing in a fire. You MUST have Last Wish or Treachery on your character being worn.
 	Scripts.Rusher = false; // Rush bot. For a list of commands, see Rusher.js
 		Config.Rusher.WaitPlayerCount = 0; // Wait until game has a certain number of players (0 - don't wait, 8 - wait for full game).
-		Config.Rusher.Radament = false; // Do Radament quest.
-		Config.Rusher.LamEsen = false; // Do Lam Esen quest.
-		Config.Rusher.Izual = false; // Do Izual quest.
-		Config.Rusher.Shenk = false; // Do Shenk quest.
-		Config.Rusher.Anya = false; // Do Anya quest.
-		Config.Rusher.LastRun = ""; // End rush after this run. List of runs: http://pastebin.com/Uez3nZ6g
-	Scripts.Rushee = false; // Automatic rushee, works with Rusher. Set Rusher's character name as Config.Leader
-		Config.Rushee.Quester = false; // Enter portals and get quest items.
-		Config.Rushee.Bumper = false; // Do Ancients and Baal. Minimum levels: 20 - norm, 40 - nightmare
-	Scripts.CrushTele = false; // classic rush teleporter. go to area of interest and press "-" numpad key
-	Scripts.Questing = false; // solves missing quests (skill/stat+shenk)
-	Scripts.Gamble = false; // Gambling system, other characters will mule gold into your game so you can gamble infinitely. See Gambling.js
-	Scripts.Crafting = false; // Crafting system, other characters will mule crafting ingredients. See CraftingSystem.js
-	Scripts.GhostBusters = false; // Kill ghosts in most areas that contain them
+		Config.Rusher.Radament = false;	// Do Radament quest.
+		Config.Rusher.LamEsen = false; 	// Do Lam Esen quest.
+		Config.Rusher.Izual = false; 	// Do Izual quest.
+		Config.Rusher.Shenk = false; 	// Do Shenk quest.
+		Config.Rusher.Anya = false; 	// Do Anya quest.
+		Config.Rusher.LastRun = ""; 	// End rush after this run. List of runs: http://pastebin.com/Uez3nZ6g
+	Scripts.Rushee = false; 		// Automatic rushee, works with Rusher. Set Rusher's character name as Config.Leader
+		Config.Rushee.Quester = false;		// Enter portals and get quest items.
+		Config.Rushee.Bumper = false; 		// Do Ancients and Baal. Minimum levels: 20 - norm, 40 - nightmare
+	Scripts.CrushTele = false; 	// classic rush teleporter. go to area of interest and press "-" numpad key
+	Scripts.Questing = false; 	// solves missing quests (skill/stat+shenk)
+	Scripts.Gamble = false; 	// Gambling system, other characters will mule gold into your game so you can gamble infinitely. See Gambling.js
+	Scripts.Crafting = false; 	// Crafting system, other characters will mule crafting ingredients. See CraftingSystem.js
+	Scripts.GhostBusters = false; 	// Kill ghosts in most areas that contain them
 	Scripts.Enchant = false;
-		Config.Enchant.Triggers = ["chant", "cows", "wps"]; // Chat commands for enchant, cow level and waypoint giving
-		Config.Enchant.GetLeg = false; // Get Wirt's Leg from Tristram. If set to false, it will check for the leg in town.
-		Config.Enchant.AutoChant = false; // Automatically enchant nearby players and their minions
-		Config.Enchant.GameLength = 20; // Game length in minutes
+		Config.Enchant.Triggers = ["chant", "cows", "wps"];	// Chat commands for enchant, cow level and waypoint giving
+		Config.Enchant.GetLeg = false; 				// Get Wirt's Leg from Tristram. If set to false, it will check for the leg in town.
+		Config.Enchant.AutoChant = false; 			// Automatically enchant nearby players and their minions
+		Config.Enchant.GameLength = 20; 			// Game length in minutes
 	Scripts.IPHunter = false;
-		Config.IPHunter.IPList = []; // List of IPs to look for. example: [165, 201, 64]
+		Config.IPHunter.IPList = []; 	// List of IPs to look for. example: [165, 201, 64]
 		Config.IPHunter.GameLength = 3; // Number of minutes to stay in game if ip wasn't found
-	Scripts.KillDclone = false; // Kill Diablo Clone by using Arcane Sanctuary waypoint. Diablo needs to walk the Earth in the game.
-	Scripts.ShopBot = false; // Shopbot script. Automatically uses shopbot.nip and ignores other pickits.
+	Scripts.KillDclone = false; 		// Kill Diablo Clone by using Arcane Sanctuary waypoint. Diablo needs to walk the Earth in the game.
+	Scripts.ShopBot = false; 		// Shopbot script. Automatically uses shopbot.nip and ignores other pickits.
 		// Supported NPCs: Akara, Charsi, Gheed, Elzix, Fara, Drognan, Ormus, Asheara, Hratli, Jamella, Halbu, Anya. Multiple NPCs are also supported, example: ["Elzix", "Fara"]
 		// Use common sense when combining NPCs. Shopping in different acts will probably lead to bugs.
 		Config.ShopBot.ShopNPC = "Anya";
