@@ -112,28 +112,6 @@ function LoadConfig() {
 
 
 
-	Scripts.TristramLeech 	= false; // Enters Tristram, attempts to stay close to the leader and will try and help kill.
-	Scripts.TravincalLeech 	= false; // Enters portal at back of Travincal.
-		Config.TravincalLeech.Helper = true; // If set to true the character will teleport to the stairs and help attack.
-	Scripts.MFHelper = false; 	// Run the same MF run as the MFLeader. Leader must have Config.MFLeader = true
-	Scripts.Wakka = false; 		// Walking chaos leecher with auto leader assignment, stays at safe distance from the leader
-	Scripts.SealLeecher = false; 	// Enter safe portals to Chaos. Leader should run SealLeader.
-	Scripts.DiabloHelper = false; 	// Chaos helper, kills monsters and doesn't open seals on its own.
-		Config.DiabloHelper.Wait = 120; 	// Seconds to wait for a runner to be in Chaos. If Config.Leader is set, it will wait only for the leader.
-		Config.DiabloHelper.Entrance = true; 	// Start from entrance. Set to false to start from star.
-		Config.DiabloHelper.SkipTP = false; 	// Don't wait for town portal and directly head to chaos. It will clear monsters around chaos entrance and wait for the runner.
-		Config.DiabloHelper.SkipIfBaal = false; // End script if there are party members in a Baal run.
-	Scripts.AutoBaal = false; 				// Baal leecher with auto leader assignment
-		Config.AutoBaal.FindShrine = false; 		// false = disabled, 1 = search after hot tp message, 2 = search as soon as leader is found
-		Config.AutoBaal.LeechSpot = [15115, 5050]; 	// X, Y coords of Throne Room leech spot
-		Config.AutoBaal.LongRangeSupport = false; 	// Cast long distance skills from a safe spot
-	Scripts.BaalHelper = false;
-		Config.BaalHelper.Wait = 120; 			// Seconds to wait for a runner to be in Throne
-		Config.BaalHelper.KillNihlathak = false; 	// Kill Nihlathak before going to Throne
-		Config.BaalHelper.FastChaos = false; 		// Kill Diablo before going to Throne
-		Config.BaalHelper.DollQuit = false;  		// End script if Dolls (Undead Soul Killers) are found.
-		Config.BaalHelper.KillBaal = true; 		// Kill Baal. If set to false, you must configure Config.QuitList or the bot will wait indefinitely.
-		Config.BaalHelper.SkipTP = false; 		// Don't wait for a TP, go to WSK3 and wait for someone to go to throne. Anti PK measure.
 	
 
 	// *** special scripts ***
@@ -151,27 +129,7 @@ function LoadConfig() {
 		Config.Rushee.Bumper = false; 		// Do Ancients and Baal. Minimum levels: 20 - norm, 40 - nightmare
 	Scripts.CrushTele = false; 	// classic rush teleporter. go to area of interest and press "-" numpad key
 	Scripts.Questing = false; 	// solves missing quests (skill/stat+shenk)
-	Scripts.Gamble = false; 	// Gambling system, other characters will mule gold into your game so you can gamble infinitely. See Gambling.js
-	Scripts.Crafting = false; 	// Crafting system, other characters will mule crafting ingredients. See CraftingSystem.js
-	Scripts.GhostBusters = false; 	// Kill ghosts in most areas that contain them
-	Scripts.Enchant = false;
-		Config.Enchant.Triggers = ["chant", "cows", "wps"];	// Chat commands for enchant, cow level and waypoint giving
-		Config.Enchant.GetLeg = false; 				// Get Wirt's Leg from Tristram. If set to false, it will check for the leg in town.
-		Config.Enchant.AutoChant = false; 			// Automatically enchant nearby players and their minions
-		Config.Enchant.GameLength = 20; 			// Game length in minutes
-	Scripts.IPHunter = false;
-		Config.IPHunter.IPList = []; 	// List of IPs to look for. example: [165, 201, 64]
-		Config.IPHunter.GameLength = 3; // Number of minutes to stay in game if ip wasn't found
-	Scripts.KillDclone = false; 		// Kill Diablo Clone by using Arcane Sanctuary waypoint. Diablo needs to walk the Earth in the game.
-	Scripts.ShopBot = false; 		// Shopbot script. Automatically uses shopbot.nip and ignores other pickits.
-		// Supported NPCs: Akara, Charsi, Gheed, Elzix, Fara, Drognan, Ormus, Asheara, Hratli, Jamella, Halbu, Anya. Multiple NPCs are also supported, example: ["Elzix", "Fara"]
-		// Use common sense when combining NPCs. Shopping in different acts will probably lead to bugs.
-		Config.ShopBot.ShopNPC = "Anya";
-		// Put item classid numbers or names to scan (remember to put quotes around names). Leave blank to scan ALL items. See libs/config/templates/ShopBot.txt
-		Config.ShopBot.ScanIDs = [];
-		Config.ShopBot.CycleDelay = 0; // Delay between shopping cycles in milliseconds, might help with crashes.
-		Config.ShopBot.QuitOnMatch = false; // Leave game as soon as an item is shopped.
-	Scripts.ChestMania = false; // Open chests in configured areas. See sdk/areas.txt
+		Scripts.ChestMania = false; // Open chests in configured areas. See sdk/areas.txt
 		Config.ChestMania.Act1 = [13, 14, 15, 16, 18, 19]; // List of act 1 areas to open chests in
 		Config.ChestMania.Act2 = [55, 59, 65, 66, 67, 68, 69, 70, 71, 72]; // List of act 2 areas to open chests in
 		Config.ChestMania.Act3 = [79, 80, 81, 92, 93, 84, 85, 90]; // List of act 3 areas to open chests in
@@ -180,46 +138,27 @@ function LoadConfig() {
 	Scripts.ClearAnyArea = false; // Clear any area. Uses Config.ClearType to determine which type of monsters to kill.
 		Config.ClearAnyArea.AreaList = []; // List of area ids to clear. See sdk/areas.txt
 
-	// *** Guest scripts ***
-
-	// Baal Assistant by YourGreatestMember
-	Scripts.BaalAssistant = false; // Used to leech or help in baal runs.
-		Config.BaalAssistant.Wait = 120; // Seconds to wait for a runner to be in the throne / portal wait / safe TP wait / hot TP wait...
-		Config.BaalAssistant.KillNihlathak = false; // Kill Nihlathak before going to Throne
-		Config.BaalAssistant.FastChaos = false; // Kill Diablo before going to Throne
-		Config.BaalAssistant.Helper = true; // Set to true to help attack, set false to to leech.
-		Config.BaalAssistant.GetShrine = false; // Set to true to get a experience shrine at the start of the run.
-		Config.BaalAssistant.GetShrineWaitForHotTP = false; // Set to true to get a experience shrine after leader shouts the hot tp message as defined in Config.BaalAssistant.HotTPMessage
-		Config.BaalAssistant.SkipTP = false; // Set to true to enable the helper to skip the TP and teleport down to the throne room.
-		Config.BaalAssistant.WaitForSafeTP = false; // Set to true to wait for a safe TP message (defined in SafeTPMessage)
-		Config.BaalAssistant.DollQuit = false; // Quit on dolls. (Hardcore players?)
-		Config.BaalAssistant.SoulQuit = false; // Quit on Souls. (Hardcore players?)
-		Config.BaalAssistant.KillBaal = true; // Set to true to kill baal, if you set to false you MUST configure Config.QuitList or Config.BaalAssistant.NextGameMessage or the bot will wait indefinitely. 
-		Config.BaalAssistant.HotTPMessage = ["Hot"]; // Configure safe TP messages.
-		Config.BaalAssistant.SafeTPMessage = ["Safe", "Clear"]; // Configure safe TP messages.
-		Config.BaalAssistant.BaalMessage = ["Baal"]; // Configure baal messages, this is a precautionary measure.
-		Config.BaalAssistant.NextGameMessage = ["Next Game", "Next", "New Game"];	// Next Game message, this is a precautionary quit command, Reccomended setting up: Config.QuitList
-
+	
 	// Town settings
-	Config.HealHP = 50; // Go to a healer if under designated percent of life.
-	Config.HealMP = 0; // Go to a healer if under designated percent of mana.
-	Config.HealStatus = false; // Go to a healer if poisoned or cursed
-	Config.UseMerc = true; // Use merc. This is ignored and always false in d2classic.
-	Config.MercWatch = false; // Instant merc revive during battle.
+	Config.HealHP = 80; 		// Go to a healer if under designated percent of life.
+	Config.HealMP = 80; 		// Go to a healer if under designated percent of mana.
+	Config.HealStatus = true; 	// Go to a healer if poisoned or cursed
+	Config.UseMerc = true; 		// Use merc. This is ignored and always false in d2classic.
+	Config.MercWatch = true; 	// Instant merc revive during battle.
 
 	// Potion settings
-	Config.UseHP = 75; // Drink a healing potion if life is under designated percent.
-	Config.UseRejuvHP = 40;  // Drink a rejuvenation potion if life is under designated percent.
-	Config.UseMP = 30; // Drink a mana potion if mana is under designated percent.
-	Config.UseRejuvMP = 0; // Drink a rejuvenation potion if mana is under designated percent.
-	Config.UseMercHP = 75; // Give a healing potion to your merc if his/her life is under designated percent.
-	Config.UseMercRejuv = 0; // Give a rejuvenation potion to your merc if his/her life is under designated percent.
-	Config.HPBuffer = 0; // Number of healing potions to keep in inventory.
-	Config.MPBuffer = 0; // Number of mana potions to keep in inventory.
-	Config.RejuvBuffer = 0; // Number of rejuvenation potions to keep in inventory.
+	Config.UseHP = 75; 		// Drink a healing potion if life is under designated percent.
+	Config.UseRejuvHP = 55;  	// Drink a rejuvenation potion if life is under designated percent.
+	Config.UseMP = 40; 		// Drink a mana potion if mana is under designated percent.
+	Config.UseRejuvMP = 0; 		// Drink a rejuvenation potion if mana is under designated percent.
+	Config.UseMercHP = 75; 		// Give a healing potion to your merc if his/her life is under designated percent.
+	Config.UseMercRejuv = 0; 	// Give a rejuvenation potion to your merc if his/her life is under designated percent.
+	Config.HPBuffer = 0; 		// Number of healing potions to keep in inventory.
+	Config.MPBuffer = 0; 		// Number of mana potions to keep in inventory.
+	Config.RejuvBuffer = 0; 	// Number of rejuvenation potions to keep in inventory.
 
 	// Chicken settings
-	Config.LifeChicken = 30; // Exit game if life is less or equal to designated percent.
+	Config.LifeChicken = 40; // Exit game if life is less or equal to designated percent.
 	Config.ManaChicken = 0; // Exit game if mana is less or equal to designated percent.
 	Config.MercChicken = 0; // Exit game if merc's life is less or equal to designated percent.
 	Config.TownHP = 0; // Go to town if life is under designated percent.
@@ -244,26 +183,24 @@ function LoadConfig() {
 	 */
 	Config.BeltColumn[0] = "hp";
 	Config.BeltColumn[1] = "mp";
-	Config.BeltColumn[2] = "rv";
+	Config.BeltColumn[2] = "mp";
 	Config.BeltColumn[3] = "rv";
 
 	/* Minimum amount of potions. If we have less, go to vendor to purchase more.
 	 * Set rejuvenation columns to 0, because they can't be bought.
 	 */
-	Config.MinColumn[0] = 3;
-	Config.MinColumn[1] = 3;
-	Config.MinColumn[2] = 0;
+	Config.MinColumn[0] = 2;
+	Config.MinColumn[1] = 2;
+	Config.MinColumn[2] = 2;
 	Config.MinColumn[3] = 0;
 
 	// Pickit config. Default folder is kolbot/pickit.
-	Config.PickitFiles.push("kolton.nip");
-	Config.PickitFiles.push("LLD.nip");
+	// Config.PickitFiles.push("kolton.nip");
+	// Config.PickitFiles.push("LLD.nip");
+	Config.PickitFiles.push("pot_C.nip");
 	Config.PickRange = 40; // Pick radius
 	Config.FastPick = false; // Check and pick items between attacks
 
-	// Additional item info log settings. All info goes to \logs\ItemLog.txt
-	Config.ItemInfo = false; // Log stashed, skipped (due to no space) or sold items.
-	Config.ItemInfoQuality = []; // The quality of sold items to log. See NTItemAlias.dbl for values. Example: Config.ItemInfoQuality = [6, 7, 8];
 
 	// Item identification settings
 	Config.CainID.Enable = false; // Identify items at Cain
@@ -467,3 +404,78 @@ function LoadConfig() {
 												//	logs activity to /logs/AutoBuild.CharacterName._MM_DD_YYYY.log
 												//	It automatically enables Config.AutoBuild.Verbose
 }
+
+/*
+	// extra scripts that I do not use...
+	
+	Scripts.Gamble = false; 	// Gambling system, other characters will mule gold into your game so you can gamble infinitely. See Gambling.js
+	Scripts.Crafting = false; 	// Crafting system, other characters will mule crafting ingredients. See CraftingSystem.js
+	Scripts.GhostBusters = false; 	// Kill ghosts in most areas that contain them
+	Scripts.Enchant = false;
+		Config.Enchant.Triggers = ["chant", "cows", "wps"];	// Chat commands for enchant, cow level and waypoint giving
+		Config.Enchant.GetLeg = false; 				// Get Wirt's Leg from Tristram. If set to false, it will check for the leg in town.
+		Config.Enchant.AutoChant = false; 			// Automatically enchant nearby players and their minions
+		Config.Enchant.GameLength = 20; 			// Game length in minutes
+	Scripts.IPHunter = false;
+		Config.IPHunter.IPList = []; 	// List of IPs to look for. example: [165, 201, 64]
+		Config.IPHunter.GameLength = 3; // Number of minutes to stay in game if ip wasn't found
+	Scripts.KillDclone = false; 		// Kill Diablo Clone by using Arcane Sanctuary waypoint. Diablo needs to walk the Earth in the game.
+	Scripts.ShopBot = false; 		// Shopbot script. Automatically uses shopbot.nip and ignores other pickits.
+		// Supported NPCs: Akara, Charsi, Gheed, Elzix, Fara, Drognan, Ormus, Asheara, Hratli, Jamella, Halbu, Anya. Multiple NPCs are also supported, example: ["Elzix", "Fara"]
+		// Use common sense when combining NPCs. Shopping in different acts will probably lead to bugs.
+		Config.ShopBot.ShopNPC = "Anya";
+		// Put item classid numbers or names to scan (remember to put quotes around names). Leave blank to scan ALL items. See libs/config/templates/ShopBot.txt
+		Config.ShopBot.ScanIDs = [];
+		Config.ShopBot.CycleDelay = 0; // Delay between shopping cycles in milliseconds, might help with crashes.
+		Config.ShopBot.QuitOnMatch = false; // Leave game as soon as an item is shopped.
+
+	Scripts.TristramLeech 	= false; // Enters Tristram, attempts to stay close to the leader and will try and help kill.
+	Scripts.TravincalLeech 	= false; // Enters portal at back of Travincal.
+		Config.TravincalLeech.Helper = true; // If set to true the character will teleport to the stairs and help attack.
+	Scripts.MFHelper = false; 	// Run the same MF run as the MFLeader. Leader must have Config.MFLeader = true
+	Scripts.Wakka = false; 		// Walking chaos leecher with auto leader assignment, stays at safe distance from the leader
+	Scripts.SealLeecher = false; 	// Enter safe portals to Chaos. Leader should run SealLeader.
+	Scripts.DiabloHelper = false; 	// Chaos helper, kills monsters and doesn't open seals on its own.
+		Config.DiabloHelper.Wait = 120; 	// Seconds to wait for a runner to be in Chaos. If Config.Leader is set, it will wait only for the leader.
+		Config.DiabloHelper.Entrance = true; 	// Start from entrance. Set to false to start from star.
+		Config.DiabloHelper.SkipTP = false; 	// Don't wait for town portal and directly head to chaos. It will clear monsters around chaos entrance and wait for the runner.
+		Config.DiabloHelper.SkipIfBaal = false; // End script if there are party members in a Baal run.
+	Scripts.AutoBaal = false; 				// Baal leecher with auto leader assignment
+		Config.AutoBaal.FindShrine = false; 		// false = disabled, 1 = search after hot tp message, 2 = search as soon as leader is found
+		Config.AutoBaal.LeechSpot = [15115, 5050]; 	// X, Y coords of Throne Room leech spot
+		Config.AutoBaal.LongRangeSupport = false; 	// Cast long distance skills from a safe spot
+	Scripts.BaalHelper = false;
+		Config.BaalHelper.Wait = 120; 			// Seconds to wait for a runner to be in Throne
+		Config.BaalHelper.KillNihlathak = false; 	// Kill Nihlathak before going to Throne
+		Config.BaalHelper.FastChaos = false; 		// Kill Diablo before going to Throne
+		Config.BaalHelper.DollQuit = false;  		// End script if Dolls (Undead Soul Killers) are found.
+		Config.BaalHelper.KillBaal = true; 		// Kill Baal. If set to false, you must configure Config.QuitList or the bot will wait indefinitely.
+		Config.BaalHelper.SkipTP = false; 		// Don't wait for a TP, go to WSK3 and wait for someone to go to throne. Anti PK measure.
+	
+	// *** Guest scripts ***
+
+	// Baal Assistant by YourGreatestMember
+	Scripts.BaalAssistant = false; // Used to leech or help in baal runs.
+		Config.BaalAssistant.Wait = 120; // Seconds to wait for a runner to be in the throne / portal wait / safe TP wait / hot TP wait...
+		Config.BaalAssistant.KillNihlathak = false; // Kill Nihlathak before going to Throne
+		Config.BaalAssistant.FastChaos = false; // Kill Diablo before going to Throne
+		Config.BaalAssistant.Helper = true; // Set to true to help attack, set false to to leech.
+		Config.BaalAssistant.GetShrine = false; // Set to true to get a experience shrine at the start of the run.
+		Config.BaalAssistant.GetShrineWaitForHotTP = false; // Set to true to get a experience shrine after leader shouts the hot tp message as defined in Config.BaalAssistant.HotTPMessage
+		Config.BaalAssistant.SkipTP = false; // Set to true to enable the helper to skip the TP and teleport down to the throne room.
+		Config.BaalAssistant.WaitForSafeTP = false; // Set to true to wait for a safe TP message (defined in SafeTPMessage)
+		Config.BaalAssistant.DollQuit = false; // Quit on dolls. (Hardcore players?)
+		Config.BaalAssistant.SoulQuit = false; // Quit on Souls. (Hardcore players?)
+		Config.BaalAssistant.KillBaal = true; // Set to true to kill baal, if you set to false you MUST configure Config.QuitList or Config.BaalAssistant.NextGameMessage or the bot will wait indefinitely. 
+		Config.BaalAssistant.HotTPMessage = ["Hot"]; // Configure safe TP messages.
+		Config.BaalAssistant.SafeTPMessage = ["Safe", "Clear"]; // Configure safe TP messages.
+		Config.BaalAssistant.BaalMessage = ["Baal"]; // Configure baal messages, this is a precautionary measure.
+		Config.BaalAssistant.NextGameMessage = ["Next Game", "Next", "New Game"];	// Next Game message, this is a precautionary quit command, Reccomended setting up: Config.QuitList
+	
+	// Additional item info log settings. All info goes to \logs\ItemLog.txt
+	Config.ItemInfo = false; // Log stashed, skipped (due to no space) or sold items.
+	Config.ItemInfoQuality = []; // The quality of sold items to log. See NTItemAlias.dbl for values. Example: Config.ItemInfoQuality = [6, 7, 8];
+
+	
+
+*/
