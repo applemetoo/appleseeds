@@ -42,22 +42,23 @@ function LoadConfig() {
 		Scripts.AncientTunnels = false;
 			Config.AncientTunnels.OpenChest = false; 	// Open special chest in Lost City
 			Config.AncientTunnels.KillDarkElder = false;
-		// Scripts.Fangskin = false;				// dEdits: create this script. In Claw Viper Temple lvl 2.
+		// Scripts.Fangskin = false;				// dEdits: create this script. In the Claw Viper Temple lvl 2.
 		Scripts.Summoner = false;
 			Config.Summoner.FireEye = false;
 		Scripts.Tombs = false;
 		Scripts.Duriel = false;
 
 	// *** act 3 ***
+		// Scripts.SazarkTheBurning = false;			// dEdits: create this script. In the Spider Cavern.
 		Scripts.Stormtree = false;
-		Scripts.KurastTemples = false;
-		Scripts.Icehawk = false;
-		Scripts.Endugu = false;
-		Scripts.Travincal = false;
-			Config.Travincal.PortalLeech = false; // Set to true to open a portal for leechers.
+		Scripts.KurastTemples = false;				// Battlemaid Sarina is in the Ruined Temple.
+		Scripts.Icehawk = false;				// In the Sewers lvl 1.
+		Scripts.Endugu = false;					// In the Flayer Dungeon lvl 3.
+		Scripts.Travincal = false;				// Ismail Vilehand/Geleb Flamefinger/Toorc Icefist are Council members.
+			Config.Travincal.PortalLeech = false; 		// Set to true to open a portal for leechers.
 		Scripts.Mephisto = false;
 			Config.Mephisto.MoatTrick = false;
-			Config.Mephisto.KillCouncil = false;
+			Config.Mephisto.KillCouncil = false;		// Bremm Sparkfist/WyandVoidbringer/Maffer Dragonhand are Council members.
 			Config.Mephisto.TakeRedPortal = true;
 
 	// *** act 4 ***
