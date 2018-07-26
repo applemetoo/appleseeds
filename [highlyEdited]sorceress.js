@@ -3,15 +3,16 @@
 function LoadConfig() {
  
 	Scripts.UserAddon = false;      //  if true, then you are able to see more info about items/NPCs/players 
-                                  //  by placing the cursor over them.
-                                  //  Shows item level/items in sockets/classid/code/magic item prefix/suffix #'s.
-                                  //  Shows monster's classid/HP percent/resistances.
-                                  //  Shows other players' gear.
+                                  	//  by placing the cursor over them.
+                                  	//  Shows item level/items in sockets/classid/code/magic item prefix/suffix #'s.
+                                  	//  Shows monster's classid/HP percent/resistances.
+                                  	//  Shows other players' gear.
 
 	// *** act 1 ***
 		Scripts.Corpsefire = false;
 			Config.Corpsefire.ClearDen = false;
-		Scripts.Mausoleum = false;
+		// Scripts.Bishibosh = false;				// dEdits: create this script
+		Scripts.Mausoleum = false;				// Bonebreaker is in the Crypt
 			Config.Mausoleum.KillBloodRaven = false;
 			Config.Mausoleum.ClearCrypt = false;
 		Scripts.Rakanishu = false;
@@ -19,7 +20,7 @@ function LoadConfig() {
 		Scripts.UndergroundPassage = false;
 		Scripts.Coldcrow = false;
 		Scripts.Tristram = false;
-			Config.Tristram.PortalLeech = false; // Set to true to open a portal for leechers.
+			Config.Tristram.PortalLeech = false; 		// Set to true to open a portal for leechers.
 		Scripts.Pit = false;
 			Config.Pit.ClearPit1 = true;
 		Scripts.Treehead = false;
@@ -27,17 +28,21 @@ function LoadConfig() {
 		Scripts.BoneAsh = false;
 		Scripts.Countess = false;
 			Config.Countess.KillGhosts = false;
+		// Scripts.PitspawnFouldog = false;			// dEdits: create this script. In Jail lvl 2.
 		Scripts.Andariel = false;
 		Scripts.Cows = false;
 
 	// *** act 2 ***
 		Scripts.Radament = false;
+		// Scipts.CreepingFeature = false;			// dEdits: create this script. In Stony Tomb lvl 2.		
 		Scripts.Coldworm = false;
 			Config.Coldworm.KillBeetleburst = false;
-			Config.Coldworm.ClearMaggotLair = false; // Clear all 3 levels
+			Config.Coldworm.ClearMaggotLair = false; 	// Clear all 3 levels
+		// Scripts.BloodWitchTheWild = false;			// dEdits: create this script. In Halls of the Dead lvl 3.
 		Scripts.AncientTunnels = false;
-			Config.AncientTunnels.OpenChest = false; // Open special chest in Lost City
+			Config.AncientTunnels.OpenChest = false; 	// Open special chest in Lost City
 			Config.AncientTunnels.KillDarkElder = false;
+		// Scripts.Fangskin = false;				// dEdits: create this script. In Claw Viper Temple lvl 2.
 		Scripts.Summoner = false;
 			Config.Summoner.FireEye = false;
 		Scripts.Tombs = false;
