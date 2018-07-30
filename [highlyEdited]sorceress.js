@@ -14,16 +14,40 @@ function LoadConfig() {
                                   	//  Shows other players' gear.
 
 	// Public game options
-
 	// If Config.Leader is set, the bot will only accept invites from leader. If Config.PublicMode is not 0, Baal and Diablo script will open Town Portals.
-	Config.PublicMode = 0; // 1 = invite and accept, 2 = accept only, 3 = invite only, 0 = disable
+	Config.PublicMode = 0; 		// 1 = invite and accept, 2 = accept only, 3 = invite only, 0 = disable
+	
 	// Party message settings. Each setting represents an array of messages that will be randomly chosen.
 	// $name, $level, $class and $killer are replaced by the player's name, level, class and killer
-	Config.Greetings = []; // Example: ["Hello, $name (level $level $class)"]
-	Config.DeathMessages = []; // Example: ["Watch out for that $killer, $name!"]
-	Config.Congratulations = []; // Example: ["Congrats on level $level, $name!"]
-	Config.ShitList = false; // Blacklist hostile players so they don't get invited to party.
-	Config.UnpartyShitlisted = false; // Leave party if someone invited a blacklisted player.
+	Config.Greetings 		= []; 	// Example: ["Hello, $name (level $level $class)"]
+	Config.DeathMessages 		= []; 	// Example: ["Watch out for that $killer, $name!"]
+	Config.Congratulations 		= []; 	// Example: ["Congrats on level $level, $name!"]
+	Config.ShitList 		= false; // Blacklist hostile players so they don't get invited to party.
+	Config.UnpartyShitlisted 	= false; // Leave party if someone invited a blacklisted player.
+	
+	// General config
+	Config.AutoMap 		= false;	// Set to true to open automap at the beginning of the game.
+	Config.LastMessage 	= ""; 		// Message or array of messages to say at the end of the run. Use $nextgame to say next game - "Next game: $nextgame" (works with lead entry point)
+	Config.MinGameTime 	= 60; 		// Min game time in seconds. Bot will TP to town and stay in game if the run is completed before.
+	Config.MaxGameTime 	= 0; 		// Maximum game time in seconds. Quit game when limit is reached.
+	Config.TeleSwitch 	= false; 	// Switch to slot II when teleporting more than 1 node.
+	Config.OpenChests 	= false; 	// Open chests. Controls key buying.
+	Config.MiniShopBot 	= false; 	// Scan items in NPC shops.
+	Config.PacketShopping 	= false; 	// Use packets to shop. Improves shopping speed.
+	Config.TownCheck 	= false; 	// Go to town if out of potions
+	Config.LogExperience 	= false; 	// Print experience statistics in the manager.
+	Config.PingQuit 	= [{Ping: 0, Duration: 0}]; // Quit if ping is over the given value for over the given time period in seconds.
+
+	// Shrine Scanner - scan for shrines while moving.
+	// Put the shrine types in order of priority (from highest to lowest). For a list of types, see sdk/shrines.txt
+	// 0 null 1 refilling 2 health 3 mana 4 health exchange 5 mana exchange 6 armor 7 combat
+	// 8 resist fire 9 resist cold 10 resist lightning 11 resist poison 12 skill 13 mana recharge
+	// 14 stamina 15 experience 16 enirhs 17 portal 18 gem 19 fire 20 monster 21 exploding 22 poison
+	Config.ScanShrines = [1,2,3,20,15,10,9,11,8,12,6,13];
+
+	// MF Switch
+	Config.MFSwitchPercent 	= 0; // Boss life % to switch weapons at. Set to 0 to disable.
+	Config.MFSwitch 	= 0; // MF weapon slot: 0 = slot I, 1 = slot II
 	
 	// *** act 1 ***
 		Scripts.Corpsefire = false;
@@ -232,52 +256,30 @@ function LoadConfig() {
 	/* Cubing config. All recipe names are available in Templates/Cubing.txt. For item names/classids check NTItemAlias.dbl
 	 * The format is Config.Recipes.push([recipe_name, item_name_or_classid, etherealness]). Etherealness is optional and only applies to some recipes.
 	 */
-	Config.Cubing = false; // Set to true to enable cubing.
-	Config.MakeRunewords = false; // Set to true to enable runeword making/rerolling
+	Config.Cubing 		= false; // Set to true to enable cubing.
+	Config.MakeRunewords 	= false; // Set to true to enable runeword making/rerolling
 
-	
-
-	// General config
-	Config.AutoMap = false; // Set to true to open automap at the beginning of the game.
-	Config.LastMessage = ""; // Message or array of messages to say at the end of the run. Use $nextgame to say next game - "Next game: $nextgame" (works with lead entry point)
-	Config.MinGameTime = 60; // Min game time in seconds. Bot will TP to town and stay in game if the run is completed before.
-	Config.MaxGameTime = 0; // Maximum game time in seconds. Quit game when limit is reached.
-	Config.TeleSwitch = false; // Switch to slot II when teleporting more than 1 node.
-	Config.OpenChests = false; // Open chests. Controls key buying.
-	Config.MiniShopBot = true; // Scan items in NPC shops.
-	Config.PacketShopping = false; // Use packets to shop. Improves shopping speed.
-	Config.TownCheck = false; // Go to town if out of potions
-	Config.LogExperience = false; // Print experience statistics in the manager.
-	Config.PingQuit = [{Ping: 0, Duration: 0}]; // Quit if ping is over the given value for over the given time period in seconds.
-
-	// Shrine Scanner - scan for shrines while moving.
-	// Put the shrine types in order of priority (from highest to lowest). For a list of types, see sdk/shrines.txt
-	Config.ScanShrines = [];
-
-	// MF Switch
-	Config.MFSwitchPercent = 0; // Boss life % to switch weapons at. Set to 0 to disable.
-	Config.MFSwitch = 0; // MF weapon slot: 0 = slot I, 1 = slot II
 
 	// Speedup config. Full packet casting is not recommended for melee skills.
-	Config.FCR = 0; // 0 - disable, 1 to 255 - set value of Faster Cast Rate.
-	Config.FHR = 0; // 0 - disable, 1 to 255 - set value of Faster Hit Recovery.
-	Config.FBR = 0; // 0 - disable, 1 to 255 - set value of Faster Block Recovery.
-	Config.IAS = 0; // 0 - disable, 1 to 255 - set value of Increased Attack Speed.
-	Config.PacketCasting = 0; // 0 = disable, 1 = packet teleport, 2 = full packet casting.
+	Config.FCR = 0; 		// 0 - disable, 1 to 255 - set value of Faster Cast Rate.
+	Config.FHR = 0; 		// 0 - disable, 1 to 255 - set value of Faster Hit Recovery.
+	Config.FBR = 0; 		// 0 - disable, 1 to 255 - set value of Faster Block Recovery.
+	Config.IAS = 0; 		// 0 - disable, 1 to 255 - set value of Increased Attack Speed.
+	Config.PacketCasting = 0; 	// 0 = disable, 1 = packet teleport, 2 = full packet casting.
 	Config.WaypointMenu = true;
 
 	// Anti-hostile config
-	Config.AntiHostile = false; // Enable anti-hostile.
-	Config.HostileAction = 0; // 0 - quit immediately, 1 - quit when hostile player is sighted, 2 - attack hostile.
-	Config.TownOnHostile = false; // Go to town instead of quitting when HostileAction is 0 or 1.
-	Config.RandomPrecast = false; // Anti-PK measure, only supported in Baal and BaalHelper and BaalAssisstant at the moment.
-	Config.ViperCheck = false; // Quit if revived Tomb Vipers are sighted.
+	Config.AntiHostile 	= false;	// Enable anti-hostile.
+	Config.HostileAction 	= 0; 		// 0 - quit immediately, 1 - quit when hostile player is sighted, 2 - attack hostile.
+	Config.TownOnHostile 	= false; 	// Go to town instead of quitting when HostileAction is 0 or 1.
+	Config.RandomPrecast 	= false; 	// Anti-PK measure, only supported in Baal and BaalHelper and BaalAssisstant at the moment.
+	Config.ViperCheck 	= false; 	// Quit if revived Tomb Vipers are sighted.
 
 	// DClone config
-	Config.StopOnDClone = true; // Go to town and idle as soon as Diablo walks the Earth
-	Config.SoJWaitTime = 5; // Time in minutes to wait for another SoJ sale before leaving game. 0 = disabled
-	Config.KillDclone = false; // Go to Palace Cellar 3 and try to kill Diablo Clone. Pointless if you already have Annihilus.
-	Config.DCloneQuit = false; // 1 = quit when Diablo walks, 2 = quit on soj sales, 0 = disabled
+	Config.StopOnDClone 	= false;	// Go to town and idle as soon as Diablo walks the Earth
+	Config.SoJWaitTime 	= 0; 		// Time in minutes to wait for another SoJ sale before leaving game. 0 = disabled
+	Config.KillDclone 	= false; 	// Go to Palace Cellar 3 and try to kill Diablo Clone. Pointless if you already have Annihilus.
+	Config.DCloneQuit 	= false; 	// 1 = quit when Diablo walks, 2 = quit on soj sales, 0 = disabled
 
 	// Monster skip config
 	// Skip immune monsters. Possible options: "fire", "cold", "lightning", "poison", "physical", "magic".
@@ -314,20 +316,24 @@ function LoadConfig() {
 		//"Monster Name": [-1, -1]
 	};
 
-	Config.Dodge = false; // Move away from monsters that get too close. Don't use with short-ranged attacks like Poison Dagger.
-	Config.DodgeRange = 15; // Distance to keep from monsters.
-	Config.DodgeHP = 100; // Dodge only if HP percent is less than or equal to Config.DodgeHP. 100 = always dodge.
-	Config.BossPriority = false; // Set to true to attack Unique/SuperUnique monsters first when clearing
-	Config.ClearType = 0xF; // Monster spectype to kill in level clear scripts (ie. Mausoleum). 0xF = skip normal, 0x7 = champions/bosses, 0 = all
-	Config.TeleStomp = false; // Use merc to attack bosses if they're immune to attacks, but not to physical damage
+	Config.Dodge		= false;	// Move away from monsters that get too close. Don't use with short-ranged attacks like Poison Dagger.
+	Config.DodgeRange 	= 15; 		// Distance to keep from monsters.
+	Config.DodgeHP 		= 100; 		// Dodge only if HP percent is less than or equal to Config.DodgeHP. 100 = always dodge.
+	Config.BossPriority 	= false; 	// Set to true to attack Unique/SuperUnique monsters first when clearing
+	Config.ClearType 	= 0xF; 		// Monster spectype to kill in level clear scripts (ie. Mausoleum). 0xF = skip normal, 0x7 = champions/bosses, 0 = all
+	Config.TeleStomp 	= false; 	// Use merc to attack bosses if they're immune to attacks, but not to physical damage
 
 	// Wereform setup. Make sure you read Templates/Attacks.txt for attack skill format.
-	Config.Wereform = false; // 0 / false - don't shapeshift, 1 / "Werewolf" - change to werewolf, 2 / "Werebear" - change to werebear
+	Config.Wereform 	= false; 	// 0 / false - don't shapeshift 1 / "Werewolf" - change to werewolf
+						// 2 / "Werebear" - change to werebear
 
 	// Class specific config
 	Config.CastStatic = 60; // Cast static until the target is at designated life percent. 100 = disabled.
-	Config.StaticList = []; // List of monster NAMES or CLASSIDS to static. Example: Config.StaticList = ["Andariel", 243];
-	
+	// List of monster NAMES or CLASSIDS to static. Example: Config.StaticList = ["Andariel", 243];
+	Config.StaticList = ["Bishibosh","Bloodraven","Griswold","Treehead Woodfist","The Countess","Smith","Boneash","Andariel",
+			     "Radament","The Summoner","Duriel",
+			     "Stormtree","Mephisto",
+			     "Izual","Hephasto","Diablo"]; 
 	
 	// AutoBuild System ( See /d2bs/kolbot/libs/config/Builds/README.txt for instructions )
 	Config.AutoBuild.Enabled = false;			//	This will enable or disable the AutoBuild system
