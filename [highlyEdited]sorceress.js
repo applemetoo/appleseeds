@@ -13,6 +13,18 @@ function LoadConfig() {
                                   	//  Shows monster's classid/HP percent/resistances.
                                   	//  Shows other players' gear.
 
+	// Public game options
+
+	// If Config.Leader is set, the bot will only accept invites from leader. If Config.PublicMode is not 0, Baal and Diablo script will open Town Portals.
+	Config.PublicMode = 0; // 1 = invite and accept, 2 = accept only, 3 = invite only, 0 = disable
+	// Party message settings. Each setting represents an array of messages that will be randomly chosen.
+	// $name, $level, $class and $killer are replaced by the player's name, level, class and killer
+	Config.Greetings = []; // Example: ["Hello, $name (level $level $class)"]
+	Config.DeathMessages = []; // Example: ["Watch out for that $killer, $name!"]
+	Config.Congratulations = []; // Example: ["Congrats on level $level, $name!"]
+	Config.ShitList = false; // Blacklist hostile players so they don't get invited to party.
+	Config.UnpartyShitlisted = false; // Leave party if someone invited a blacklisted player.
+	
 	// *** act 1 ***
 		Scripts.Corpsefire = false;
 			Config.Corpsefire.ClearDen = false;
@@ -164,12 +176,7 @@ function LoadConfig() {
 	Config.TownHP = 0; // Go to town if life is under designated percent.
 	Config.TownMP = 0; // Go to town if mana is under designated percent.
 
-	/* Inventory lock configuration. !!!READ CAREFULLY!!!
-	 * 0 = item is locked and won't be moved. If item occupies more than one slot, ALL of those slots must be set to 0 to lock it in place.
-	 * Put 0s where your torch, annihilus and everything else you want to KEEP is.
-	 * 1 = item is unlocked and will be dropped, stashed or sold.
-	 * If you don't change the default values, the bot won't stash items.
-	 */
+	// Inventory lock configuration. !!!READ CAREFULLY!!!
 	Config.Inventory[0] = [0,0,0,0,0,0,0,0,0,0];
 	Config.Inventory[1] = [0,0,0,0,0,0,0,0,0,0];
 	Config.Inventory[2] = [0,0,0,0,0,0,0,0,0,0];
@@ -177,18 +184,15 @@ function LoadConfig() {
 
 	Config.StashGold = 100000; // Minimum amount of gold to stash.
 
-	/* Potion types for belt columns from left to right.
-	 * Rejuvenation potions must always be rightmost.
-	 * Supported potions - Healing ("hp"), Mana ("mp") and Rejuvenation ("rv")
-	 */
+	// Potion types for belt columns from left to right.
+	// Supported potions - Healing ("hp"), Mana ("mp") and Rejuvenation ("rv")
 	Config.BeltColumn[0] = "hp";
 	Config.BeltColumn[1] = "mp";
 	Config.BeltColumn[2] = "mp";
 	Config.BeltColumn[3] = "rv";
 
-	/* Minimum amount of potions. If we have less, go to vendor to purchase more.
-	 * Set rejuvenation columns to 0, because they can't be bought.
-	 */
+	// Min # potions. If we have less, go to vendor to purchase more.
+	// Set rejuvenation columns to 0, because they can't be bought.
 	Config.MinColumn[0] = 2;
 	Config.MinColumn[1] = 2;
 	Config.MinColumn[2] = 2;
@@ -229,77 +233,9 @@ function LoadConfig() {
 	 * The format is Config.Recipes.push([recipe_name, item_name_or_classid, etherealness]). Etherealness is optional and only applies to some recipes.
 	 */
 	Config.Cubing = false; // Set to true to enable cubing.
-
-	// Ingredients for the following recipes will be auto-picked, for classids check libs/NTItemAlias.dbl
-
-	//Config.Recipes.push([Recipe.Gem, "Flawless Amethyst"]); // Make Perfect Amethyst
-	//Config.Recipes.push([Recipe.Gem, "Flawless Topaz"]); // Make Perfect Topaz
-	//Config.Recipes.push([Recipe.Gem, "Flawless Sapphire"]); // Make Perfect Sapphire
-	//Config.Recipes.push([Recipe.Gem, "Flawless Emerald"]); // Make Perfect Emerald
-	//Config.Recipes.push([Recipe.Gem, "Flawless Ruby"]); // Make Perfect Ruby
-	//Config.Recipes.push([Recipe.Gem, "Flawless Diamond"]); // Make Perfect Diamond
-	//Config.Recipes.push([Recipe.Gem, "Flawless Skull"]); // Make Perfect Skull
-
-	//Config.Recipes.push([Recipe.Token]); // Make Token of Absolution
-
-	//Config.Recipes.push([Recipe.Rune, "Pul Rune"]); // Upgrade Pul to Um
-	//Config.Recipes.push([Recipe.Rune, "Um Rune"]); // Upgrade Um to Mal
-	//Config.Recipes.push([Recipe.Rune, "Mal Rune"]); // Upgrade Mal to Ist
-	//Config.Recipes.push([Recipe.Rune, "Ist Rune"]); // Upgrade Ist to Gul
-	//Config.Recipes.push([Recipe.Rune, "Gul Rune"]); // Upgrade Gul to Vex
-
-	//Config.Recipes.push([Recipe.Caster.Amulet]); // Craft Caster Amulet
-	//Config.Recipes.push([Recipe.Blood.Ring]); // Craft Blood Ring
-	//Config.Recipes.push([Recipe.Blood.Helm, "Armet"]); // Craft Blood Armet
-	//Config.Recipes.push([Recipe.HitPower.Gloves, "Vambraces"]); // Craft Hit Power Vambraces
-
-	// The gems not used by other recipes will be used for magic item rerolling.
-
-	//Config.Recipes.push([Recipe.Reroll.Magic, "Diadem"]); // Reroll magic Diadem
-	//Config.Recipes.push([Recipe.Reroll.Magic, "Grand Charm"]); // Reroll magic Grand Charm (ilvl 91+)
-
-	//Config.Recipes.push([Recipe.Reroll.Rare, "Diadem"]); // Reroll rare Diadem
-
-	/* Base item for the following recipes must be in pickit. The rest of the ingredients will be auto-picked.
-	 * Use Roll.Eth, Roll.NonEth or Roll.All to determine what kind of base item to roll - ethereal, non-ethereal or all.
-	 */
-	//Config.Recipes.push([Recipe.Socket.Weapon, "Thresher", Roll.Eth]); // Socket ethereal Thresher
-	//Config.Recipes.push([Recipe.Socket.Weapon, "Cryptic Axe", Roll.Eth]); // Socket ethereal Cryptic Axe
-	//Config.Recipes.push([Recipe.Socket.Armor, "Sacred Armor", Roll.Eth]); // Socket ethereal Sacred Armor
-	//Config.Recipes.push([Recipe.Socket.Armor, "Archon Plate", Roll.Eth]); // Socket ethereal Archon Plate
-
-	//Config.Recipes.push([Recipe.Unique.Armor.ToExceptional, "Heavy Gloves", Roll.NonEth]); // Upgrade Bloodfist to Exceptional
-	//Config.Recipes.push([Recipe.Unique.Armor.ToExceptional, "Light Gauntlets", Roll.NonEth]); // Upgrade Magefist to Exceptional
-	//Config.Recipes.push([Recipe.Unique.Armor.ToElite, "Sharkskin Gloves", Roll.NonEth]); // Upgrade Bloodfist or Grave Palm to Elite
-	//Config.Recipes.push([Recipe.Unique.Armor.ToElite, "Battle Gauntlets", Roll.NonEth]); // Upgrade Magefist or Lavagout to Elite
-	//Config.Recipes.push([Recipe.Unique.Armor.ToElite, "War Boots", Roll.NonEth]); // Upgrade Gore Rider to Elite
-
-	/* Runeword config. All recipes are available in Templates/Runewords.txt
-	 * Keep lines follow pickit format and any given runeword is tested vs ALL lines so you don't need to repeat them
-	 */
 	Config.MakeRunewords = false; // Set to true to enable runeword making/rerolling
 
-	//Config.Runewords.push([Runeword.Insight, "Thresher"]); // Make Insight Thresher
-	//Config.Runewords.push([Runeword.Insight, "Cryptic Axe"]); // Make Insight Cryptic Axe
-
-	//Config.KeepRunewords.push("[type] == polearm # [meditationaura] == 17");
-
-	//Config.Runewords.push([Runeword.Spirit, "Monarch"]); // Make Spirit Monarch
-	//Config.Runewords.push([Runeword.Spirit, "Sacred Targe"]); // Make Spirit Sacred Targe
-
-	//Config.KeepRunewords.push("[type] == shield || [type] == auricshields # [fcr] == 35");
-
-	// Public game options
-
-	// If Config.Leader is set, the bot will only accept invites from leader. If Config.PublicMode is not 0, Baal and Diablo script will open Town Portals.
-	Config.PublicMode = 0; // 1 = invite and accept, 2 = accept only, 3 = invite only, 0 = disable
-	// Party message settings. Each setting represents an array of messages that will be randomly chosen.
-	// $name, $level, $class and $killer are replaced by the player's name, level, class and killer
-	Config.Greetings = []; // Example: ["Hello, $name (level $level $class)"]
-	Config.DeathMessages = []; // Example: ["Watch out for that $killer, $name!"]
-	Config.Congratulations = []; // Example: ["Congrats on level $level, $name!"]
-	Config.ShitList = false; // Blacklist hostile players so they don't get invited to party.
-	Config.UnpartyShitlisted = false; // Leave party if someone invited a blacklisted player.
+	
 
 	// General config
 	Config.AutoMap = false; // Set to true to open automap at the beginning of the game.
